@@ -102,7 +102,7 @@ touch log/v2ray-mu.log
 wget https://raw.githubusercontent.com/ChenSee/easy-v2ray-mu/dev/cfg.json
 wget https://raw.githubusercontent.com/ChenSee/easy-v2ray-mu/dev/v2mctl
 wget https://raw.githubusercontent.com/ChenSee/easy-v2ray-mu/dev/mu.conf
-sed -i "s;##mu_uri##;$mu_uri;g" mu.conf
+sed -i "s;##mu_uri##;${mu_uri}/mu/v2;g" mu.conf
 sed -i "s;##mu_key##;$mu_key;g" mu.conf
 sed -i "s;##node_id##;$node_id;g" mu.conf
 sed -i "s;##ShVersion##;$shellsVersion;g" mu.conf
