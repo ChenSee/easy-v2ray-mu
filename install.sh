@@ -4,6 +4,7 @@ clear
 mu_uri=$1
 mu_key=$2
 node_id=$3
+ssr_node_id=$4
 
 
 echo '-------------------------------'
@@ -60,7 +61,7 @@ sed -i "s#https://zhaoj.in#${mu_uri}#" /usr/local/shadowsocks/userapiconfig.py
 sed -i "s#glzjinmod#modwebapi#" /usr/local/shadowsocks/userapiconfig.py
 sed -i "s#glzjin#${mu_key}#" /usr/local/shadowsocks/userapiconfig.py
 sed -i '2d' /root/shadowsocks/userapiconfig.py
-sed -i "2a\NODE_ID = ${node_id}" /usr/local/shadowsocks/userapiconfig.py
+sed -i "2a\NODE_ID = ${ssr_node_id}" /usr/local/shadowsocks/userapiconfig.py
 bash run.sh
 
 echo "* * * * * (if [ \"$(ps -eaf |grep server.py | grep -v grep | awk '{print $2}')\" == \"\" ]; then cd /usr/local/shadowsocks && bash run.sh; fi)">> /var/spool/cron/root
