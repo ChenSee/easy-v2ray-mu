@@ -125,6 +125,11 @@ if [ "$isCronRunsh" != "$thisPath" ]; then
 fi
 bash run.sh
 
+
+echo "cd /usr/local/v2ray && bash run.sh" >> /etc/rc.local
+echo "cd /usr/local/shadowsocks && bash run.sh" >> /etc/rc.local
+chmod +x /etc/rc.d/rc.local
+
 service crond restart
 echo '--------------------------------'
 echo -e '|       \033[33mInstall finshed\033[0m        |'
