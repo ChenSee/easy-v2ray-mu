@@ -4,8 +4,10 @@ clear
 mu_uri=$1
 mu_key=$2
 node_id=$3
+
+
 echo '-------------------------------'
-echo '|  Configuring Easy-V2ray-Mu  |'
+echo '|  Configuring V2ray And SSR  |'
 echo '-------------------------------'
 if [ ! $node_id ];
 then 
@@ -40,13 +42,39 @@ then
 	exit
 fi
 echo '-------------------------------'
-echo '|        Installing...        |'
+echo '|        Installing SSR...    |'
 echo '-------------------------------'
 yum install unzip -y
 yum install crontabs -y
 chkconfig --level 35 crond on
 service crond start
+yum install git -y
+
 clear
+git clone https://github.com/ChenSee/shadowsocks-1.git "/usr/local/shadowsocks"
+cd /usr/local/shadowsocks
+curl -O https://bootstrap.pypa.io/get-pip.py
+python get-pip.py 
+pip install -r requirements.txt
+sed -i "s#https://zhaoj.in#${mu_uri}#" /usr/local/shadowsocks/userapiconfig.py
+sed -i "s#glzjinmod#modwebapi#" /usr/local/shadowsocks/userapiconfig.py
+sed -i "s#glzjin#${mu_key}#" /usr/local/shadowsocks/userapiconfig.py
+sed -i '2d' /root/shadowsocks/userapiconfig.py
+sed -i "2a\NODE_ID = ${node_id}" /usr/local/shadowsocks/userapiconfig.py
+bash run.sh
+
+echo "* * * * * (if [ \"$(ps -eaf |grep server.py | grep -v grep | awk '{print $2}')\" == \"\" ]; then cd /usr/local/shadowsocks && bash run.sh; fi)">> /var/spool/cron/root
+
+
+
+echo '-------------------------------'
+echo '|        Installing V2RAY...  |'
+echo '-------------------------------'
+
+
+clear
+mkdir /usr/local/v2ray
+cd /usr/local/v2ray
 echo -e "\033[33m ____            _  __     __\n|  _ \ _ __ ___ (_) \ \   / /\n| |_) | '__/ _ \| |  \ \ / / \n|  __/| | | (_) | |   \ V /  \n|_|   |_|  \___// |    \_/ \033[5mInstaling...\033[0m\033[33m  \n              |__/          for Mu_api\n\033[0m"
 echo 'Getting Latest Version...'
 v2Version=`wget -q -O - https://api.github.com/repos/v2ray/v2ray-core/releases/latest | grep '"tag_name":'| awk '{printf $2}'`
@@ -95,9 +123,12 @@ fi
 if [ "$isCronRunsh" != "$thisPath" ]; then
     echo "* * * * * cd $(readlink -f .) && ./status.sh">> /var/spool/cron/root
 fi
+bash run.sh
+
+service crond restart
 echo '--------------------------------'
 echo -e '|       \033[33mInstall finshed\033[0m        |'
-echo -e '|\033[32mplease run this command to run\033[0m|'
+# echo -e '|\033[32mplease run this command to run\033[0m|'
 echo -e '-----------\033[33m V  V  V \033[0m------------'
-echo -e "\033[32mcd $(readlink -f .) && ./run.sh\033[0m"
+# echo -e "\033[32mcd $(readlink -f .) && ./run.sh\033[0m"
 
