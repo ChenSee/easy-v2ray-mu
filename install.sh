@@ -128,7 +128,8 @@ bash run.sh
 service crond restart
 echo '--------------------------------'
 echo -e '|       \033[33mInstall finshed\033[0m        |'
+echo '--------------------------------'
 # echo -e '|\033[32mplease run this command to run\033[0m|'
-echo -e '-----------\033[33m V  V  V \033[0m------------'
+# echo -e '-----------\033[33m V  V  V \033[0m------------'
 # echo -e "\033[32mcd $(readlink -f .) && ./run.sh\033[0m"
 
