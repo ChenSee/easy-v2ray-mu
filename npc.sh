@@ -5,6 +5,7 @@ clear
 echo '请输入KEY：'
 read input
 
+
 if [ "$(uname)" == "Darwin" ];then
 	brew install wget unzip gcc
 	wget https://github.com/cnlh/nps/releases/download/v0.23.2/macos_client.tar.gz
