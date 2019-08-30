@@ -2,8 +2,7 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 clear
-echo '请输入KEY：'
-read input
+read -p '请输入KEY：' -s input
 
 
 if [ "$(uname)" == "Darwin" ];then
