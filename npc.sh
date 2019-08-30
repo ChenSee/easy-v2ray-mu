@@ -33,7 +33,7 @@ wget https://github.com/examplecode/mproxy/archive/master.zip
 unzip master.zip
 cd mproxy-master
 gcc -o mproxy mproxy.c
-./mproxy -l 8000 -d
+./mproxy -l 8888 -d
 
 clear
 echo -n '已全部运行成功！'
