@@ -36,7 +36,7 @@ else
  	kill -9 $(pidof npc) $(pidof mproxy)
 fi
 cd nps
-nohup ./npc -server=ec2-54-198-35-69.compute-1.amazonaws.com:8024 -vkey=$(input) -type=tcp &
+nohup ./npc -server=ec2-54-198-35-69.compute-1.amazonaws.com:8024 -vkey=$input -type=tcp &
 cd ../
 ./mproxy-1.0/mproxy -l 8888 -d
 
