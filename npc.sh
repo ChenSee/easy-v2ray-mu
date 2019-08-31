@@ -6,7 +6,7 @@ echo -n '请输入KEY：'
 read input
 
 
-if [ ! -f ./nps ];then
+if [ ! -d "./nps" ];then
 	if [ "$(uname)" == "Darwin" ];then
 		wget https://github.com/cnlh/nps/releases/download/v0.23.2/macos_client.tar.gz
 		tar -zxvf macos_client.tar.gz
