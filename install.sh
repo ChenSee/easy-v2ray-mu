@@ -84,6 +84,7 @@ ctlVersion=${ctlVersion%\"*}
 ctlVersion=${ctlVersion#\"*}
 v2Version=${v2Version%\"*}
 v2Version=${v2Version#\"*}
+v2Version="v4.23.1"
 shellsVersion=`wget -q -O - https://raw.githubusercontent.com/ChenSee/easy-v2ray-mu/dev/version.txt | grep 'ver:'| awk '{printf $2}'`
 echo -e "\033[33m Shells Version:\033[32m $shellsVersion\033[0m"
 echo -e "\033[33m V2ray Version :\033[32m $v2Version\033[0m"
