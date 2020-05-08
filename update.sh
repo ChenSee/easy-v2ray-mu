@@ -1,11 +1,9 @@
 #!/bin/bash
 shellsVersion=`wget -q -O - https://raw.githubusercontent.com/tonychanczm/easy-v2ray-mu/dev/version.txt | grep 'ver:'| awk '{printf $2}'`
-v2Version=`wget -q -O - https://api.github.com/repos/v2ray/v2ray-core/releases/latest | grep '"tag_name":'| awk '{printf $2}'`
+v2Version=$(curl -s 'https://api.github.com/repos/v2ray/v2ray-core/releases/latest' -H 'Accept: application/vnd.github.v3+json' | grep 'tag_name' | cut -d\" -f4)
 ctlVersion=`wget -q -O - https://api.github.com/repos/tonychanczm/easy-v2ray-mu/releases/latest | grep '"tag_name":'| awk '{printf $2}'`
 ctlVersion=${ctlVersion%\"*}
 ctlVersion=${ctlVersion#\"*}
-v2Version=${v2Version%\"*}
-v2Version=${v2Version#\"*}
 source ./mu.conf
 if [ "$shellsVersion" != "" ]; then
     if [ "$shellsVersion" != "$ShVersion" ]; then
