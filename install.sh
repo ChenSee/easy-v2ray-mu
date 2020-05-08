@@ -3,8 +3,8 @@
 clear
 mu_uri=$1
 mu_key=$2
-node_id=$3
-ssr_node_id=$4
+node_id=$4
+ssr_node_id=$3
 
 
 echo '-------------------------------'
