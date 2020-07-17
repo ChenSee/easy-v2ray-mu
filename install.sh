@@ -1,5 +1,11 @@
 #!/bin/bash
 #a strange script to install v2ray-mu
+
+yum install unzip -y
+yum install crontabs -y
+chkconfig --level 35 crond on
+service crond start
+yum install git -y
 clear
 mu_uri=$1
 mu_key=$2
@@ -48,11 +54,6 @@ then
 	echo '-------------------------------'
 	echo '|        Installing SSR...    |'
 	echo '-------------------------------'
-	yum install unzip -y
-	yum install crontabs -y
-	chkconfig --level 35 crond on
-	service crond start
-	yum install git -y
 
 	clear
 	git clone https://github.com/ChenSee/shadowsocks-1.git "/usr/local/shadowsocks"
