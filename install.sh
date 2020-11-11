@@ -94,7 +94,7 @@ then
 	echo -e "\033[33m Muctl Version :\033[32m $ctlVersion\033[0m"
 	sleep 1
 	ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-	wget -O v2ray-linux-64.zip https://github.com/v2ray/v2ray-core/releases/download/$v2Version/v2ray-linux-64.zip
+	wget -O v2ray-linux-64.zip https://github.com/v2fly/v2ray-core/releases/download/$v2Version/v2ray-linux-64.zip
 	unzip v2ray-linux-64.zip
 	rm -rf v2ray-linux-64.zip
 	mv v2ray-$v2Version-linux-64 v2ray-mu
