@@ -3,6 +3,7 @@
 
 import sys
 import argparse
+sys.path.insert(0, '/www/server/panel/class') 
 sys.path.insert(0, '/www/server/panel')
 
 from BTPanel import app
